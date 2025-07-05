@@ -81,7 +81,7 @@ export function Header() {
               className="hidden sm:flex"
             >
               <a
-                href="https://github.com"
+                href="https://github.com/kusmin"
                 target="_blank"
                 rel="noopener noreferrer"
               >
