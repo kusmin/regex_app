@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
 import { Toaster } from '@/components/ui/toaster'
+import Script from 'next/script'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -60,6 +61,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const umamiId = process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID
   return (
     <html lang="pt-BR" suppressHydrationWarning>
       <body className={inter.className}>
@@ -72,6 +74,13 @@ export default function RootLayout({
           {children}
           <Toaster />
         </ThemeProvider>
+        {umamiId && (
+            <Script
+                src="https://umami.updev.dev.br/script.js"
+                data-website-id={umamiId}
+                strategy="afterInteractive"
+            />
+        )}
       </body>
     </html>
   )
