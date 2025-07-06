@@ -125,6 +125,64 @@ export function ExamplesModal({ open, onOpenChange }: ExamplesModalProps) {
       matches: ['@joao_silva', '@maria123', '@admin_site'],
       language: 'javascript',
     },
+
+  {
+    name: 'Link Markdown',
+        regex: '\\\\[([^\\\\]]+)\\\\]\\\\(([^)]+)\\\\)',
+      description: 'Captura o texto e a URL em links formato Markdown',
+      testText: 'Veja [meu site](https://exemplo.com) e o [repo](http://github.com/user/proj).',
+      matches: ['[meu site](https://exemplo.com)', '[repo](http://github.com/user/proj)'],
+      language: 'javascript',
+  },
+  {
+    name: 'HTML Tag',
+        regex: '<\\\\/?[A-Za-z][A-Za-z0-9-]*(\\\\s+[A-Za-z_:.-]+(=([\"\\\'][^\"\\\']*[\"\\\']|[^\\s>]+))?)*\\\\s*\\\\/?',
+      description: 'Captura tags HTML genéricas com atributos simples',
+      testText: '<div class=\"box\">Olá</div> <img src=\"img.png\" alt=\"img\"/>',
+      matches: ['<div class=\"box\">', '</div>', '<img src=\"img.png\" alt=\"img\"/>'],
+      language: 'javascript',
+  },
+  {
+    name: 'Par chave-valor JSON',
+        regex: '\"([^\"]+)\"\\\\s*:\\\\s*\"([^\"]*)\"',
+      description: 'Encontra pares chave/valor em objetos JSON simples',
+      testText: '{\"nome\":\"João\",\"idade\":\"30\",\"cidade\":\"BH\"}',
+      matches: ['\"nome\":\"João\"', '\"idade\":\"30\"', '\"cidade\":\"BH\"'],
+      language: 'javascript',
+  },
+  {
+    name: 'Número Romano (I-M)',
+        regex: '\\\\bM{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})\\\\b',
+      description: 'Reconhece números romanos válidos de I até MMMMCMXCIX',
+      testText: 'Números: IV, XIV, XLII, MMXXV, invalid: IC, XM',
+      matches: ['IV', 'XIV', 'XLII', 'MMXXV'],
+      language: 'javascript',
+  },
+  {
+    name: 'Cor Hex 3 ou 6 dígitos',
+        regex: '#(?:[A-Fa-f0-9]{3}){1,2}\\b',
+      description: 'Aceita cores tipo #FFF ou #1A2B3C',
+      testText: 'Cores: #abc, #ABCDEF, #123, texto #GGG inválido',
+      matches: ['#abc', '#ABCDEF', '#123'],
+      language: 'javascript',
+  },
+  {
+    name: 'Palavras duplicadas',
+        regex: '\\\\b(\\\\w+)\\\\s+\\\\1\\\\b',
+      description: 'Detecta repetições imediatas de palavras (case-insensitive)',
+      testText: 'Este texto contém contém duplicatas.',
+      matches: ['contém contém'],
+      language: 'javascript',
+  },
+    {
+      name: 'Senha forte (mín. 8, maiúscula, minúscula, número, símbolo)',
+      regex: '(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*()_+\\-\\=\\[\\]{};\\\'":\\\\|,.<>\\/?]).{8,}',
+      description: 'Valida senhas fortes com pelo menos 8 caracteres e diversidade de conjuntos',
+      testText: 'Senhas: Abcdef1!, fraco123, Forte#2025, aA1!',
+      matches: ['Abcdef1!', 'Forte#2025'],
+      language: 'javascript',
+    }
+
   ]
 
   const handleCopyRegex = (regex: string) => {

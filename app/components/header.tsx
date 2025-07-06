@@ -5,7 +5,10 @@ import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { ExamplesModal } from '@/components/examples-modal'
 import { HistoryPopover } from '@/components/history-popover'
-import { History, BookOpen, Copy, Github } from 'lucide-react'
+import { History, BookOpen, Copy, Github, Coffee,
+  Linkedin,
+  Globe,
+  Twitter } from 'lucide-react'
 import { useToast } from '@/hooks/use-toast'
 
 export function Header() {
@@ -86,6 +89,45 @@ export function Header() {
                 rel="noopener noreferrer"
               >
                 <Github className="w-4 h-4" />
+              </a>
+            </Button>
+
+
+            {/* Buy Me a Coffee */}
+            <Button variant="ghost" size="sm" asChild className="hidden sm:flex">
+              <a
+                  href="https://buymeacoffee.com/kusmin"
+                  target="_blank"
+                  rel="noopener noreferrer"
+              >
+                <Coffee className="w-4 h-4" />
+              </a>
+            </Button>
+
+            {/* LinkedIn */}
+            <Button variant="ghost" size="sm" asChild className="hidden sm:flex">
+              <a
+                  href="https://www.linkedin.com/in/renan-ribeiro-b1368872/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+              >
+                <Linkedin className="w-4 h-4" />
+              </a>
+            </Button>
+
+            {/* X / Twitter */}
+            <Button variant="ghost" size="sm" asChild className="hidden sm:flex">
+              <a
+                  href="https://twitter.com/seu_usuario"
+                  target="_blank"
+                  rel="noopener noreferrer"
+              >
+                <Twitter className="w-4 h-4" />
+              </a>
+            </Button>
+            <Button variant="ghost" size="sm" asChild className="hidden sm:flex">
+              <a href="https://bytes.updev.dev.br" target="_blank" rel="noopener noreferrer">
+                <Globe className="w-4 h-4" />
               </a>
             </Button>
           </div>
